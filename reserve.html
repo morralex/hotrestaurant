@@ -17,43 +17,58 @@
     <div class="contaner">
         <div class="row">
             <div class="col">
-            <div class="jumbotron">
-                <h1 class="display-4">WELCOME TO HOT RESTAURANTS!</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                    attention to
-                    featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.
-                </p>
-                <a class="btn btn-primary btn-lg" href="./tables" role="button">View Tables</a>
-                <a class="btn btn-primary btn-lg" href="./home" role="button">Home</a>
-            </div>
+                <div class="jumbotron">
+                    <h1 class="display-4">WELCOME TO HOT RESTAURANTS!</h1>
+                    <hr class="my-4">
+                    <h2>Make your reservation</h2>
+                    <a class="btn btn-primary btn-lg" href="./tables" role="button">View Tables</a>
+                    <a class="btn btn-primary btn-lg" href="./home" role="button">Home</a>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-            <form>
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="userNumber">Phone Number</label>
-                    <input type="number" class="form-control" id="userNumber">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="userId">Unique ID</label>
-                    <input type="userId" class="form-control" id="userId">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <form>
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input type="name" class="form-control" id="name aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="userNumber">Phone Number</label>
+                        <input type="number" class="form-control" id="number">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="userId">Unique ID</label>
+                        <input type="userId" class="form-control" id="userId">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="tableReserve">Submit</button>
+                </form>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#tableReserve").on("click", function (event) {
+            event.preventDefault();
+            var reservation = {
+                name: $("#name").val().trim(),
+                number: $("#number").val().trim(),
+                email: $("#email").val().trim(),
+                id: $("#userId").val().trim(),
+            };
+
+            // Question: What does this code do??
+            $.post("/api/characters", newCharacter)
+                .then(function (data) {
+                    console.log("add.html", data);
+                    alert("Adding character...");
+                });
+        });
+    </script>
 
     <script src="./server.js"></script>
 </body>
